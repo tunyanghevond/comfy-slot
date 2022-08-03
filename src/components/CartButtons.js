@@ -7,7 +7,20 @@ import { useCartContext } from '../context/cart_context'
 import { useUserContext } from '../context/user_context'
 
 const CartButtons = () => {
-  return <h4>cart buttons </h4>
+  return (
+    <Wrapper>
+      <Link to='/cart' className='cart-btn'>
+        Cart
+        <span className='cart-container'>
+          <FaShoppingCart />
+          <span className='cart-value'>12</span>
+        </span>
+      </Link>
+      <button type='button' className='auth-btn'>
+        Login <FaUserPlus />
+      </button>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`
@@ -15,14 +28,12 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   align-items: center;
   width: 225px;
-
   .cart-btn {
     color: var(--clr-grey-1);
     font-size: 1.5rem;
     letter-spacing: var(--spacing);
     color: var(--clr-grey-1);
     display: flex;
-
     align-items: center;
   }
   .cart-container {
