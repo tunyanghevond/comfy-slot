@@ -21,13 +21,13 @@ const SingleProductPage = () => {
     single_product_error: error,
     single_product: product,
     fetchSingleProduct,
-  } = useProductsContext
+  } = useProductsContext()
 
-  // useEffect(() => {
-  //   console.log(`${url}${id}`)
-
-  //   fetchSingleProduct(`${url}${id}`)
-  // }, [id])
+  useEffect(() => {
+    fetchSingleProduct(`${url}${id}`)
+    // eslint-disable-next-line
+  }, [id])
+  console.log(error, loading, product)
 
   if (loading) {
     return <Loading />
@@ -36,7 +36,7 @@ const SingleProductPage = () => {
   if (error) {
     return <Error />
   }
-  return <h4>single product page{product}</h4>
+  return <h4>single product page</h4>
 }
 
 const Wrapper = styled.main`
