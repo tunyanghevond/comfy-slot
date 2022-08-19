@@ -3,7 +3,52 @@ import { useFilterContext } from '../context/filter_context'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
 import styled from 'styled-components'
 const Sort = () => {
-  return <h4>sort </h4>
+  const {
+    filtered_products: products,
+    grid_view,
+    setListView,
+    setGridView,
+    updateSort,
+    sort,
+  } = useFilterContext()
+
+  return (
+    <Wrapper>
+      <div className='btn-container'>
+        <button
+          type='button'
+          className={`${grid_view ? 'active' : null}`}
+          onClick={setGridView}
+        >
+          <BsFillGridFill />
+        </button>
+        <button
+          type='button'
+          className={`${!grid_view ? 'active' : null}`}
+          onClick={setListView}
+        >
+          <BsList />
+        </button>
+      </div>
+      <p>{products.length} products found</p>
+      <hr />
+      <form>
+        <label htmlFor='sort'>sort by</label>
+        <select
+          name='sort'
+          id='sort'
+          className='sort-input'
+          value={sort}
+          onChange={updateSort}
+        >
+          <option value='price-lowest'>price (lowest)</option>
+          <option value='price-highest'>price (highest)</option>
+          <option value='name-a'>name (a-z)</option>
+          <option value='name-z'>name (z-a)</option>
+        </select>
+      </form>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
@@ -12,6 +57,16 @@ const Wrapper = styled.section`
   align-items: center;
   margin-bottom: 2rem;
   column-gap: 2rem;
+  .sort-input {
+    border-color: transparent;
+    font-size: 1rem;
+    text-transform: capitalize;
+    padding: 0.25rem 0.5rem;
+  }
+  label {
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
   @media (max-width: 576px) {
     display: grid;
     grid-template-columns: 1fr;
@@ -55,17 +110,6 @@ const Wrapper = styled.section`
       background: var(--clr-black);
       color: var(--clr-white);
     }
-  }
-
-  .sort-input {
-    border-color: transparent;
-    font-size: 1rem;
-    text-transform: capitalize;
-    padding: 0.25rem 0.5rem;
-  }
-  label {
-    font-size: 1rem;
-    text-transform: capitalize;
   }
 `
 
