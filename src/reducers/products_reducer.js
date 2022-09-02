@@ -1,4 +1,3 @@
-import { act } from 'react-dom/test-utils'
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
