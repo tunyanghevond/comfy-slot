@@ -14,9 +14,9 @@ export const UserProvider = ({ children }) => {
     } else {
       setMyUser(false)
     }
-    console.log(`user : ${user}`)
-    console.log(`isAuthenticated : ${isAuthenticated}`)
-    console.log(`isLoading : ${isLoading}`)
+    // console.log(`user : ${user}`)
+    // console.log(`isAuthenticated : ${isAuthenticated}`)
+    // console.log(`isLoading : ${isLoading}`)
   }, [isAuthenticated])
   return (
     <UserContext.Provider value={{ loginWithRedirect, logout, myUser }}>
@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   )
 }
-// make sure use
+
 export const useUserContext = () => {
   return useContext(UserContext)
 }
